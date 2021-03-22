@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 )
 
@@ -39,14 +40,14 @@ func parseConfig() error {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s [opts] [version] [os/arch]\n", progname)
 		fmt.Fprint(flag.CommandLine.Output(), "\n-raw and -all mixed with version is disallowed\n")
 		fmt.Fprint(flag.CommandLine.Output(), "\nDefaults:\n")
-		fmt.Fprint(flag.CommandLine.Output(), "OS = linux\n")
-		fmt.Fprint(flag.CommandLine.Output(), "Arch = amd64 \n")
+		fmt.Fprintf(flag.CommandLine.Output(), "OS = %s\n", runtime.GOOS)
+		fmt.Fprintf(flag.CommandLine.Output(), "Arch = %s\n", runtime.GOARCH)
 		fmt.Fprint(flag.CommandLine.Output(), "\nExamples:\n")
 		fmt.Fprint(flag.CommandLine.Output(), "Print the most recent versions\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s\n", progname)
 		fmt.Fprint(flag.CommandLine.Output(), "Print all versions with raw json\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s -raw -all\n", progname)
-		fmt.Fprint(flag.CommandLine.Output(), "Retrieve the 1.15.1 release package for linux/amd64 (linux/amd64 is the default)\n")
+		fmt.Fprint(flag.CommandLine.Output(), "Retrieve the 1.15.1 release package for the default OS/Architecture\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s 1.15.1\n", progname)
 		fmt.Fprint(flag.CommandLine.Output(), "Retrieve the 1.15.1 release package for darwin/amd64\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s 1.15.1 darwin/amd64\n", progname)
@@ -67,8 +68,8 @@ func parseConfig() error {
 	}
 	Config.Dir = flag.String("dir", filepath.Join(home, ".go"), "Directory to unpack archive into")
 	flag.Parse()
-	Config.OS = "linux"
-	Config.Arch = "amd64"
+	Config.OS = runtime.GOOS
+	Config.Arch = runtime.GOARCH
 	if flag.NArg() > 2 {
 		flag.Usage()
 	}
