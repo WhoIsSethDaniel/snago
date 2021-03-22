@@ -53,7 +53,7 @@ func packageToDownload(f []GoVersions) (GoPkg, error) {
 			}
 		}
 	}
-	return GoPkg{}, fmt.Errorf("Unable to find package for %s %s/%s", Config.Version, Config.OS, Config.Arch)
+	return GoPkg{}, fmt.Errorf("unable to find package for %s %s/%s", Config.Version, Config.OS, Config.Arch)
 }
 
 func retrievePackage(p GoPkg) error {

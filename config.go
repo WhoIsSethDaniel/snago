@@ -21,10 +21,7 @@ var Config struct {
 }
 
 func hasVersion() bool {
-	if Config.Version == "" {
-		return false
-	}
-	return true
+	return Config.Version != ""
 }
 
 func needAllVersions() bool {
