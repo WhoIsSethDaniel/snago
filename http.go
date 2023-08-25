@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"time"
@@ -11,7 +11,7 @@ import (
 // curl -o dl.json https://golang.org/dl/?mode=json (that last '/' is important)
 // curl -o dl.json https://golang.org/dl/?mode=json&include=all (every release available for download)
 const (
-	listURL = "https://golang.org/dl/"
+	listURL = "https://go.dev/dl/"
 	dlURL   = "https://dl.google.com/go/"
 )
 
@@ -36,7 +36,7 @@ func getListings(u url.URL) ([]byte, error) {
 		return nil, err
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
 	}

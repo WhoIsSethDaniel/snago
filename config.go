@@ -10,6 +10,7 @@ import (
 	"strings"
 )
 
+// Config ....
 var Config struct {
 	Version string
 	All     *bool
