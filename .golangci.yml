@@ -1,0 +1,77 @@
+version: "2"
+run:
+  issues-exit-code: 1
+linters:
+  default: none
+  enable:
+    - bodyclose
+    - dogsled
+    - dupl
+    - errcheck
+    - exhaustive
+    - goconst
+    - gocritic
+    - gocyclo
+    - gosec
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - nolintlint
+    - prealloc
+    - predeclared
+    - staticcheck
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+  settings:
+    errcheck:
+      check-type-assertions: true
+    goconst:
+      min-len: 2
+      min-occurrences: 3
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofumpt
+    - goimports
+    - golines
+
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+
+    gofumpt:
+      extra-rules: true
+
+    golines:
+      shorten-comments: true
+
+  exclusions:
+    generated: lax
