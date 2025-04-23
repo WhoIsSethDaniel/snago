@@ -19,7 +19,7 @@ func downloadPackage(f []GoVersions) (GoPkg, error) {
 	return p, nil
 }
 
-func installPackage(f string, dir string) error {
+func installPackage(f, dir string) error {
 	fmt.Printf("Installing package to %s\n", dir)
 	if err := archiver.Unarchive(f, dir); err != nil {
 		return err

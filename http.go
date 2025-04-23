@@ -9,7 +9,8 @@ import (
 )
 
 // curl -o dl.json https://golang.org/dl/?mode=json (that last '/' is important)
-// curl -o dl.json https://golang.org/dl/?mode=json&include=all (every release available for download)
+// curl -o dl.json https://golang.org/dl/?mode=json&include=all (every release available for
+// download)
 const (
 	listURL = "https://go.dev/dl/"
 	dlURL   = "https://dl.google.com/go/"
@@ -53,7 +54,12 @@ func packageToDownload(f []GoVersions) (GoPkg, error) {
 			}
 		}
 	}
-	return GoPkg{}, fmt.Errorf("unable to find package for %s %s/%s", Config.Version, Config.OS, Config.Arch)
+	return GoPkg{}, fmt.Errorf(
+		"unable to find package for %s %s/%s",
+		Config.Version,
+		Config.OS,
+		Config.Arch,
+	)
 }
 
 func retrievePackage(p GoPkg) error {

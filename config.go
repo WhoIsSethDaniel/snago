@@ -45,11 +45,20 @@ func parseConfig() error {
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s\n", progname)
 		fmt.Fprint(flag.CommandLine.Output(), "Print all versions with raw json\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s -raw -all\n", progname)
-		fmt.Fprint(flag.CommandLine.Output(), "Retrieve the 1.15.1 release package for the default OS/Architecture\n")
+		fmt.Fprint(
+			flag.CommandLine.Output(),
+			"Retrieve the 1.15.1 release package for the default OS/Architecture\n",
+		)
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s 1.15.1\n", progname)
-		fmt.Fprint(flag.CommandLine.Output(), "Retrieve the 1.15.1 release package for darwin/amd64\n")
+		fmt.Fprint(
+			flag.CommandLine.Output(),
+			"Retrieve the 1.15.1 release package for darwin/amd64\n",
+		)
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s 1.15.1 darwin/amd64\n", progname)
-		fmt.Fprint(flag.CommandLine.Output(), "Retrieve the 1.15.1 release package and unpack it to ~/go\n")
+		fmt.Fprint(
+			flag.CommandLine.Output(),
+			"Retrieve the 1.15.1 release package and unpack it to ~/go\n",
+		)
 		fmt.Fprintf(flag.CommandLine.Output(), "  %s -dir ~/go 1.15.1\n", progname)
 		fmt.Fprintf(flag.CommandLine.Output(), "\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "Options:\n")
